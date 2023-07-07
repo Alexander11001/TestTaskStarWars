@@ -1,6 +1,7 @@
 package com.example.testtaskstarwars.di
 
 import com.example.testtaskstarwars.data.api.StarWarsApi
+import com.example.testtaskstarwars.domain.BASE_URL
 import com.example.testtaskstarwars.domain.TIMEOUT
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -18,8 +19,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
-
-    private val BASE_URL = "https://swapi.dev/api/"
 
     private val gson: Gson = GsonBuilder()
         .create()

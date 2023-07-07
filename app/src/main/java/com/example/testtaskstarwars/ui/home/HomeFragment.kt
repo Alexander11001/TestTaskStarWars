@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testtaskstarwars.databinding.FragmentHomeBinding
 import com.example.testtaskstarwars.domain.models.UiState
 import com.example.testtaskstarwars.ui.adapters.MainPageAdapter
+import com.example.testtaskstarwars.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val viewModel: HomeViewModel by viewModels()
@@ -30,7 +30,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -43,24 +42,8 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            viewModel.people.collect { peopleList ->
-//                peopleList?.let {
-//                    adapter.submitList(it.map { MainPageItem.PeopleItem(it) })
-//                }
-//            }
-//        }
-//
-//        viewModel.getPeople()
-
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            viewModel.getPeople.collect { peopleList ->
-//                    render(peopleList)
-//            }
-//        }
-
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getPeopleBySearch.collect { peopleList ->
+            viewModel.getItemsBySearch.collect { peopleList ->
                 render(peopleList)
             }
         }
@@ -75,30 +58,33 @@ class HomeFragment : Fragment() {
                 return true
             }
         })
-
-//        viewModel.getPeople()
-
-
     }
 
-    private fun render(uiState: UiState) {
+    override fun render(uiState: UiState) {
         when (uiState) {
             is UiState.Loading -> {
-                binding.progressBar.visibility = View.VISIBLE
-
+                showProgressBar()
             }
 
             is UiState.Success -> {
                 adapter.submitList(uiState.dataList)
-                binding.progressBar.visibility = View.GONE
+                hideProgressBar()
             }
 
             is UiState.Error -> {
                 adapter.submitList(emptyList())
                 Toast.makeText(requireContext(), uiState.errorMessage, Toast.LENGTH_SHORT).show()
-                binding.progressBar.visibility = View.GONE
+                hideProgressBar()
             }
         }
+    }
+
+    override fun showProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgressBar() {
+        binding.progressBar.visibility = View.GONE
     }
 
     override fun onDestroyView() {

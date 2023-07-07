@@ -17,26 +17,24 @@ class MainPageAdapter : ListAdapter<MainPageItem, RecyclerView.ViewHolder>(MainP
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
             is MainPageItem.PeopleItem -> R.layout.people_item
-            //todo Replace with correct layout
-            is MainPageItem.PlanetItem -> 1
-            is MainPageItem.StarshipsItem -> 2
+            is MainPageItem.PlanetItem -> R.layout.planet_item
+            is MainPageItem.StarshipsItem -> R.layout.starships_item
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutId = when (viewType) {
             R.layout.people_item -> R.layout.people_item
-            //todo Replace with correct layout
-            1 -> R.layout.fragment_dashboard
-            2 -> R.layout.fragment_dashboard
+            R.layout.starships_item -> R.layout.starships_item
+            R.layout.planet_item -> R.layout.planet_item
             else -> throw IllegalArgumentException("Invalid viewType")
         }
         val view = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
         return when (viewType) {
             R.layout.people_item -> PeopleViewHolder(view)
-            //todo Replace with correct layout
-            1 -> PlanetViewHolder(view)
-            2 -> StarshipsViewHolder(view)
+            R.layout.starships_item -> StarshipsViewHolder(view)
+            R.layout.planet_item -> PlanetViewHolder(view)
+
             else -> throw IllegalArgumentException("Invalid viewType")
         }
     }
@@ -63,14 +61,27 @@ class MainPageAdapter : ListAdapter<MainPageItem, RecyclerView.ViewHolder>(MainP
 
     inner class PlanetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(planet: Planet) {
+            val name = itemView.findViewById<TextView>(R.id.namePlanetTextView)
+            val diameter = itemView.findViewById<TextView>(R.id.diameterTextView)
+            val population = itemView.findViewById<TextView>(R.id.populationTextView)
 
-
+            name.text = planet.name
+            diameter.text = planet.diameter
+            population.text = planet.population
         }
     }
 
     inner class StarshipsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(starships: Starships) {
+            val name = itemView.findViewById<TextView>(R.id.nameStarshipTextView)
+            val model = itemView.findViewById<TextView>(R.id.modelTextView)
+            val manufacturer = itemView.findViewById<TextView>(R.id.manufacturerTextView)
+            val passengers = itemView.findViewById<TextView>(R.id.passengersTextView)
 
+            name.text = starships.name
+            model.text = starships.model
+            manufacturer.text = starships.manufacturer
+            passengers.text = starships.passengers
         }
     }
 

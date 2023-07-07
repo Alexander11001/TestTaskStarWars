@@ -2,10 +2,13 @@ package com.example.testtaskstarwars.data.repository
 
 import com.example.testtaskstarwars.data.api.StarWarsApi
 import com.example.testtaskstarwars.data.dto.toDataPeople
+import com.example.testtaskstarwars.data.dto.toDataPlanetList
 import com.example.testtaskstarwars.data.dto.toDataStarshipsList
 import com.example.testtaskstarwars.data.dto.toPeopleList
+import com.example.testtaskstarwars.data.dto.toPlanetList
 import com.example.testtaskstarwars.data.dto.toStarshipList
 import com.example.testtaskstarwars.domain.models.People
+import com.example.testtaskstarwars.domain.models.Planet
 import com.example.testtaskstarwars.domain.models.Starships
 import com.example.testtaskstarwars.domain.repository.NetworkRepository
 import kotlinx.coroutines.flow.Flow
@@ -29,4 +32,8 @@ class NetworkRepositoryImpl @Inject constructor(private val api: StarWarsApi) : 
         emit(dtoList.toStarshipList())
     }
 
+    override fun loadPlanetBySearch(name: String): Flow<List<Planet>> = flow {
+        val dtoList = api.getPlanetsBySearch(name).toDataPlanetList()
+        emit(dtoList.toPlanetList())
+    }
 }

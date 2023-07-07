@@ -1,10 +1,8 @@
 package com.example.testtaskstarwars.data.dto
 
-import com.example.testtaskstarwars.domain.models.DataPeople
 import com.example.testtaskstarwars.domain.models.DataStarships
-import com.example.testtaskstarwars.domain.models.Films
-import com.example.testtaskstarwars.domain.models.People
 import com.example.testtaskstarwars.domain.models.Starships
+import com.example.testtaskstarwars.ui.adapters.MainPageItem
 import com.google.gson.annotations.SerializedName
 
 data class StarshipsDTO(
@@ -41,6 +39,14 @@ fun StarshipsDTO.toStarships() = Starships(
 
 fun DataStarships.toStarshipList(): List<Starships> {
     return this.results
+}
+
+fun List<Starships>.toMainPageItemList(): List<MainPageItem> {
+    return this.map { it.toMainPageItem() }
+}
+
+fun Starships.toMainPageItem(): MainPageItem {
+    return MainPageItem.StarshipsItem(this)
 }
 
 

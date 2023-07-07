@@ -5,3 +5,7 @@ data class Planet(
     val diameter: String,
     val population: String
 )
+
+data class DataPlanet(
+    val results: List<Planet>
+)
