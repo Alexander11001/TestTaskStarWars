@@ -6,7 +6,11 @@ data class People(
     val gender: String,
     //Only quantity of starships required
     val starships: Int,
-    val films: List<Films>
+    val films: List<String>
+)
+
+data class DataPeople(
+    val results: List<People>
 )
 
 

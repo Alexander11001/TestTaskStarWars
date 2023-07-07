@@ -62,6 +62,10 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
+    def okhttpVersion = "4.11.0"
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+
     //room
     def roomVersion = "2.5.2"
     implementation "androidx.room:room-runtime:$roomVersion"
