@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,8 +22,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val viewModel: HomeViewModel by viewModels()
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private val adapter = MainPageAdapter()
 
@@ -34,10 +33,6 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
         return binding.root
     }
 
@@ -58,11 +53,28 @@ class HomeFragment : Fragment() {
 //
 //        viewModel.getPeople()
 
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            viewModel.getPeople.collect { peopleList ->
+//                    render(peopleList)
+//            }
+//        }
+
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getPeople.collect { peopleList ->
-                    render(peopleList)
+            viewModel.getPeopleBySearch.collect { peopleList ->
+                render(peopleList)
             }
         }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.setSearchQuery(newText ?: "")
+                return true
+            }
+        })
 
 //        viewModel.getPeople()
 
@@ -82,9 +94,8 @@ class HomeFragment : Fragment() {
             }
 
             is UiState.Error -> {
-
+                adapter.submitList(emptyList())
                 Toast.makeText(requireContext(), uiState.errorMessage, Toast.LENGTH_SHORT).show()
-
                 binding.progressBar.visibility = View.GONE
             }
         }

@@ -9,4 +9,9 @@ data class Starships(
     val model: String,
     val manufacturer: String,
     val passengers: String,
+    val films: List<String>
+)
+
+data class DataStarships(
+    val results: List<Starships>
 )
