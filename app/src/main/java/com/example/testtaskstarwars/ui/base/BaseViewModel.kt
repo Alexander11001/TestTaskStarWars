@@ -3,7 +3,6 @@ package com.example.testtaskstarwars.ui.base
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testtaskstarwars.data.repository.DataBaseRepositoryImpl
 import com.example.testtaskstarwars.data.room.entities.toEntity
 import com.example.testtaskstarwars.domain.repository.DataBaseRepository
 import com.example.testtaskstarwars.ui.adapters.FavoriteItemCallback

@@ -14,7 +14,6 @@
         android:background="@color/light_grey"
         android:padding="16dp">
 
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/nameTitleTextView"
             android:layout_width="wrap_content"
@@ -28,10 +27,10 @@
             android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/nameTitleTextView"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/nameTitleTextView"
-            app:layout_constraintHorizontal_bias="0.1" />
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@id/nameTitleTextView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/genderTitleTextView"
@@ -46,10 +45,10 @@
             android:id="@+id/genderTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/genderTitleTextView"
-            app:layout_constraintTop_toBottomOf="@id/nameTextView"
             app:layout_constraintBottom_toBottomOf="@id/genderTitleTextView"
-            app:layout_constraintHorizontal_bias="0.1" />
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@id/genderTitleTextView"
+            app:layout_constraintTop_toBottomOf="@id/nameTextView" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/starshipsTitleTextView"
@@ -64,10 +63,10 @@
             android:id="@+id/starshipsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/starshipsTitleTextView"
-            app:layout_constraintTop_toBottomOf="@id/genderTextView"
             app:layout_constraintBottom_toBottomOf="@id/starshipsTitleTextView"
-            app:layout_constraintHorizontal_bias="0.1" />
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@id/starshipsTitleTextView"
+            app:layout_constraintTop_toBottomOf="@id/genderTextView" />
 
         <View
             android:layout_width="match_parent"

@@ -22,6 +22,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
@@ -70,6 +71,9 @@ class HomeViewModel @Inject constructor(
             }
         }
         .flowOn(Dispatchers.IO)
+        .catch { e ->
+            emit(UiState.Error(e.message ?: "Unknown error"))
+        }
         .stateIn(
             viewModelScope,
             started = SharingStarted.WhileSubscribed(STOP_SUBSCRIBE_TIME),

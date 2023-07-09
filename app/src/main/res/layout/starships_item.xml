@@ -62,9 +62,9 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/manufacturerTextView"
             android:layout_width="0dp"
-            app:layout_constraintEnd_toStartOf="@+id/starshipFavoriteButton"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@id/manufacturerTitleTextView"
+            app:layout_constraintEnd_toStartOf="@+id/starshipFavoriteButton"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toEndOf="@id/manufacturerTitleTextView"
             app:layout_constraintTop_toBottomOf="@id/modelTextView" />

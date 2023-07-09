@@ -6,5 +6,5 @@ interface FavoriteItemCallback {
 
     fun onFavoriteChanged(item: MainPageItem)
 
-    fun isItemFavorite (item: MainPageItem): Flow<Boolean>
+    fun isItemFavorite(item: MainPageItem): Flow<Boolean>
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +25,8 @@ class HomeFragment : BaseFragment() {
 
     private val binding get() = _binding!!
     private val adapter by lazy {
-        MainPageAdapter(viewModel, lifecycleScope
+        MainPageAdapter(
+            viewModel, lifecycleScope
         )
     }
 
@@ -41,6 +43,7 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initOnBackPressed()
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
@@ -61,6 +64,8 @@ class HomeFragment : BaseFragment() {
                 return true
             }
         })
+
+
     }
 
     override fun render(uiState: UiState) {
@@ -81,6 +86,17 @@ class HomeFragment : BaseFragment() {
             }
         }
     }
+
+    private fun initOnBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    //do nothing. Otherwise you go to animation screen (that`s not the idea)
+                }
+            })
+    }
+
 
     override fun showProgressBar() {
         binding.progressBar.visibility = View.VISIBLE

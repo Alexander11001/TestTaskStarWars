@@ -7,10 +7,10 @@
     tools:context=".ui.favorites.FavoritesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id = "@+id/rv_favorites"
+        android:id="@+id/rv_favorites"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"/>
+        android:layout_marginBottom="56dp" />
 
     <ProgressBar
         android:id="@+id/progressBarFav"
@@ -21,6 +21,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/rv_favorites"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/rv_favorites"
-        app:layout_constraintTop_toTopOf="@+id/rv_favorites"/>
+        app:layout_constraintTop_toTopOf="@+id/rv_favorites" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

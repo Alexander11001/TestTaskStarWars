@@ -43,5 +43,4 @@ interface DataBaseRepository {
     fun containsPeople(name: String): Flow<Boolean>
     fun containsPlanet(name: String): Flow<Boolean>
     fun containsStarships(name: String): Flow<Boolean>
-
 }

@@ -27,10 +27,10 @@
             android:id="@+id/namePlanetTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/nameTitlePlanetTextView"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/nameTitlePlanetTextView"
-            app:layout_constraintHorizontal_bias="0.1" />
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@id/nameTitlePlanetTextView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/diameterTitleTextView"
@@ -45,10 +45,10 @@
             android:id="@+id/diameterTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/diameterTitleTextView"
-            app:layout_constraintTop_toBottomOf="@id/namePlanetTextView"
             app:layout_constraintBottom_toBottomOf="@id/diameterTitleTextView"
-            app:layout_constraintHorizontal_bias="0.1" />
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@id/diameterTitleTextView"
+            app:layout_constraintTop_toBottomOf="@id/namePlanetTextView" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/populationTitleTextView"
@@ -63,10 +63,10 @@
             android:id="@+id/populationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/populationTitleTextView"
-            app:layout_constraintTop_toBottomOf="@id/diameterTextView"
             app:layout_constraintBottom_toBottomOf="@id/populationTitleTextView"
-            app:layout_constraintHorizontal_bias="0.1" />
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@id/populationTitleTextView"
+            app:layout_constraintTop_toBottomOf="@id/diameterTextView" />
 
         <View
             android:layout_width="match_parent"
