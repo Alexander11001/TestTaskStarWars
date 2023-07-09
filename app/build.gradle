@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.testtaskstarwars"
-        minSdk 24
+        minSdk 21
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -54,7 +54,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
 
-
     //retrofit
     def retrofitVersion = "2.9.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
@@ -85,12 +84,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
     testImplementation "io.mockk:mockk:1.13.5"
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
     testImplementation "org.mockito:mockito-core:3.3.3"
     testImplementation 'org.mockito:mockito-inline:3.3.3'
     testImplementation 'org.mockito.kotlin:mockito-kotlin:3.2.0'
-
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
 }
