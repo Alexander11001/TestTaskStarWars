@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.testtaskstarwars.data.repository.DataBaseRepositoryImpl
 import com.example.testtaskstarwars.data.room.entities.toEntity
+import com.example.testtaskstarwars.domain.repository.DataBaseRepository
 import com.example.testtaskstarwars.ui.adapters.FavoriteItemCallback
 import com.example.testtaskstarwars.ui.adapters.MainPageItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 open class BaseViewModel @Inject constructor(
-    private val dataBaseRepository: DataBaseRepositoryImpl
+    private val dataBaseRepository: DataBaseRepository
 ) : ViewModel(), FavoriteItemCallback {
 
     override fun onFavoriteChanged(item: MainPageItem) {

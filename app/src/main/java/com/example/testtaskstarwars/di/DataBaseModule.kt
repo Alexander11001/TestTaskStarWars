@@ -2,8 +2,10 @@ package com.example.testtaskstarwars.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.testtaskstarwars.data.repository.DataBaseRepositoryImpl
 import com.example.testtaskstarwars.data.room.dao.StarWarsDao
 import com.example.testtaskstarwars.data.room.dao.StarWarsDatabase
+import com.example.testtaskstarwars.domain.repository.DataBaseRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,5 +29,10 @@ class DataBaseModule {
     @Provides
     fun provideStarWarsDao(database: StarWarsDatabase): StarWarsDao {
         return database.starWarsDao()
+    }
+
+    @Provides
+    fun provideDataBaseRepository(dao: StarWarsDao): DataBaseRepository {
+        return DataBaseRepositoryImpl(dao)
     }
 }

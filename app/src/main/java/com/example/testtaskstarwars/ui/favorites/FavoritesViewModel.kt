@@ -6,6 +6,7 @@ import com.example.testtaskstarwars.data.room.entities.toPeople
 import com.example.testtaskstarwars.data.room.entities.toPlanet
 import com.example.testtaskstarwars.data.room.entities.toStarships
 import com.example.testtaskstarwars.domain.models.UiState
+import com.example.testtaskstarwars.domain.repository.DataBaseRepository
 import com.example.testtaskstarwars.ui.adapters.FavoriteItemCallback
 import com.example.testtaskstarwars.ui.adapters.MainPageItem
 import com.example.testtaskstarwars.ui.base.BaseViewModel
@@ -21,7 +22,7 @@ import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
-class FavoritesViewModel @Inject constructor(dataBaseRepository: DataBaseRepositoryImpl) :
+class FavoritesViewModel @Inject constructor(dataBaseRepository: DataBaseRepository) :
     FavoriteItemCallback, BaseViewModel(dataBaseRepository) {
 
     private val _uiState = dataBaseRepository.getAllPeople()

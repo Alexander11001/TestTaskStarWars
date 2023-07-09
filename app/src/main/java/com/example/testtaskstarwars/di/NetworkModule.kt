@@ -1,8 +1,10 @@
 package com.example.testtaskstarwars.di
 
 import com.example.testtaskstarwars.data.api.StarWarsApi
+import com.example.testtaskstarwars.data.repository.NetworkRepositoryImpl
 import com.example.testtaskstarwars.domain.BASE_URL
 import com.example.testtaskstarwars.domain.TIMEOUT
+import com.example.testtaskstarwars.domain.repository.NetworkRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -50,5 +52,10 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(StarWarsApi::class.java)
+    }
+
+    @Provides
+    fun provideDataBaseRepository(api: StarWarsApi): NetworkRepository {
+        return NetworkRepositoryImpl(api)
     }
 }

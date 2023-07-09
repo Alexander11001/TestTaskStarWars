@@ -1,8 +1,6 @@
 package com.example.testtaskstarwars.ui.home
 
 import androidx.lifecycle.viewModelScope
-import com.example.testtaskstarwars.data.repository.DataBaseRepositoryImpl
-import com.example.testtaskstarwars.data.repository.NetworkRepositoryImpl
 import com.example.testtaskstarwars.domain.DEBOUNCE
 import com.example.testtaskstarwars.domain.QUERY_LENGTH
 import com.example.testtaskstarwars.domain.STOP_SUBSCRIBE_TIME
@@ -10,6 +8,8 @@ import com.example.testtaskstarwars.domain.models.People
 import com.example.testtaskstarwars.domain.models.Planet
 import com.example.testtaskstarwars.domain.models.Starships
 import com.example.testtaskstarwars.domain.models.UiState
+import com.example.testtaskstarwars.domain.repository.DataBaseRepository
+import com.example.testtaskstarwars.domain.repository.NetworkRepository
 import com.example.testtaskstarwars.ui.adapters.FavoriteItemCallback
 import com.example.testtaskstarwars.ui.adapters.MainPageItem
 import com.example.testtaskstarwars.ui.base.BaseViewModel
@@ -34,13 +34,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val networkRepository: NetworkRepositoryImpl,
-    dataBaseRepository: DataBaseRepositoryImpl
+    private val networkRepository: NetworkRepository,
+    dataBaseRepository: DataBaseRepository
 ) :
     BaseViewModel(dataBaseRepository), FavoriteItemCallback {
 
     private val _searchQuery = MutableStateFlow("")
-    private val searchQuery: StateFlow<String> = _searchQuery
+    val searchQuery: StateFlow<String> = _searchQuery
 
     fun setSearchQuery(query: String) {
         _searchQuery.value = query
