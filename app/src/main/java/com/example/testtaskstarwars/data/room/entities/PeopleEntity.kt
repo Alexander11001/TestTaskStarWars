@@ -2,6 +2,7 @@ package com.example.testtaskstarwars.data.room.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.testtaskstarwars.domain.models.People
 
 @Entity
 data class PeopleEntity(
@@ -12,8 +13,27 @@ data class PeopleEntity(
     val starships: Int,
 )
 
-@Entity(primaryKeys = ["starshipId", "filmId"])
+@Entity(primaryKeys = ["peopleId", "filmId"])
 data class PeopleFilmCrossRef(
-    val people: Int,
+    val peopleId: Int,
     val filmId: Int
 )
+
+fun People.toEntity(): PeopleEntity {
+    return PeopleEntity(
+        id = 0,
+        name = this.name,
+        gender = this.gender,
+        starships = this.starships
+    )
+}
+
+fun PeopleEntity.toPeople(): People {
+    return People(
+        name = this.name,
+        gender = this.gender,
+        starships = this.starships,
+        films = listOf()
+    )
+}
+
