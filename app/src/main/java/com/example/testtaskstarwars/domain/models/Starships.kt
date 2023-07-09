@@ -9,7 +9,8 @@ data class Starships(
     val model: String,
     val manufacturer: String,
     val passengers: String,
-    val films: List<String>
+    val films: List<String>,
+    var isFavorite: Boolean = false
 )
 
 data class DataStarships(

@@ -6,7 +6,8 @@ data class People(
     val gender: String,
     //Only quantity of starships required
     val starships: Int,
-    val films: List<String>
+    val films: List<String>,
+    var isFavorite: Boolean = false
 )
 
 data class DataPeople(

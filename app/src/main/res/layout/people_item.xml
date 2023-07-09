@@ -77,16 +77,16 @@
             app:layout_constraintTop_toBottomOf="@id/starshipsTextView" />
 
         <ImageButton
-            android:id="@+id/favoriteButton"
+            android:id="@+id/peopleFavoriteButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@color/light_grey"
             android:contentDescription="for adding favorites"
-            android:src="@mipmap/ic_heart_foreground"
+            android:src="@drawable/heart_empty"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@mipmap/ic_heart_foreground" />
+            tools:src="@drawable/heart_empty" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textView"
